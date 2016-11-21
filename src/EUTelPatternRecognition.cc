@@ -461,10 +461,10 @@ void EUTelPatternRecognition::clearTrackAndTrackStates(){
 void EUTelPatternRecognition::findTracksWithEnoughHits(){
 	streamlog_out(DEBUG1) << "EUTelPatternRecognition::findTracksWithEnoughHits()------BEGIN" << std::endl;
 	_tracksAfterEnoughHitsCut.clear();
-	if(_tracks.size() == 0 ){
-		streamlog_out(MESSAGE5) <<"This is event: " <<getEventNumber()<<std::endl;   
-		streamlog_out(MESSAGE5) << "The number of tracks for this event is zero "<<std::endl; 
-	}
+//	if(_tracks.size() == 0 ){
+//		streamlog_out(MESSAGE5) <<"This is event: " <<getEventNumber()<<std::endl;
+//		streamlog_out(MESSAGE5) << "The number of tracks for this event is zero "<<std::endl;
+//	}
 	for(size_t i = 0 ; i<_tracks.size(); ++i){
 		EUTelTrack& track = _tracks[i];
 		streamlog_out ( DEBUG2 ) << "Number of hits on the track: " <<track.getNumberOfHitsOnTrack()<<" Number needed: " <<  geo::gGeometry().sensorZOrderToIDWithoutExcludedPlanes().size() - _allowedMissingHits << std::endl;

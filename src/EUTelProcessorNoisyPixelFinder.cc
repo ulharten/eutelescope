@@ -119,12 +119,12 @@ EUTelProcessorNoisyPixelFinder::~EUTelProcessorNoisyPixelFinder()
 
 void EUTelProcessorNoisyPixelFinder::initializeHitMaps() 
 {
-	//it stored detectoID and itt stores the vector for the y-entries
+	//it stored detectoID and it stores the vector for the y-entries
 	for( EVENT::IntVec::iterator it = _sensorIDVec.begin(); it != _sensorIDVec.end(); ++it ) 
 	{
 		try
 		{
-			//get the geoemtry description of the plane
+			//get the geometry description of the plane
 			geo::EUTelGenericPixGeoDescr* geoDescr = geo::gGeometry().getPixGeoDescr( *it ) ;
 
 			//get the max/min pixel indices
