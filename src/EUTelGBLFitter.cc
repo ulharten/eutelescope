@@ -239,7 +239,7 @@ namespace eutelescope {
 		std::string mEstimatorTypeLowerCase = mEstimatorType;
 		std::transform( mEstimatorType.begin(), mEstimatorType.end(), mEstimatorTypeLowerCase.begin(), ::tolower);//Make the character lower case
 		if ( mEstimatorType.size() != 1 ) {
-			streamlog_out( WARNING1 ) << "More than one character supplied as M-estimator option" << std::endl;
+			streamlog_out( WARNING1 ) << "More than one or no character supplied as M-estimator option" << std::endl;
 			streamlog_out( WARNING1 ) << "No M-estimator downweighting will be used" << std::endl;
 			return;
 		}
