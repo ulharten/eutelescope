@@ -105,7 +105,7 @@ void EUTelMillepede::writeMilleSteeringFile(lcio::StringVec pedeSteerAddCmds){
 	streamlog_out(DEBUG2) << "EUTelMillepede::writeMilleSteeringFile------------------------------------BEGIN" << std::endl;
 
 	ofstream steerFile;
-	steerFile.open(_milleSteeringFilename.c_str());//We open the text file se we can add text to it.
+	steerFile.open(_milleSteeringFilename.c_str());//We open the text file so we can add text to it.
 	if (!steerFile.is_open()) {
 		throw(lcio::Exception("Could not open steering file.")); 	
 	}
@@ -140,7 +140,7 @@ void EUTelMillepede::writeMilleSteeringFile(lcio::StringVec pedeSteerAddCmds){
 		const string initUncertaintyZRotation = (isFixedZRotation) ? "-1." : "1";
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////END
 
-		//TO DO: Determine is this initial shift is needed. 
+		//TO DO: Determine if this initial shift is needed.
 		/*We can set the initial shift that millepede will work from. This would be the same as changing the gear file I think. I do not know why this is here.        
 		const double initXshift = (isFixedXShift) ? 0. : _seedAlignmentConstants._xResiduals[sensorId]/_seedAlignmentConstants._nxResiduals[sensorId];
 		const double initYshift = (isFixedYShift) ? 0. : _seedAlignmentConstants._yResiduals[sensorId]/_seedAlignmentConstants._nyResiduals[sensorId];
@@ -162,7 +162,7 @@ void EUTelMillepede::writeMilleSteeringFile(lcio::StringVec pedeSteerAddCmds){
 	
 	} // end loop over all planes
 	steerFile << std::endl;
-	//Here we add some more paramter that millepede needs. This is involves: How is the solution found, How are outliers down weighted(These are hits that are very far from state hit) and chi2 cuts
+	//Here we add some more parameters that millepede needs. This involves: How is the solution found, How are outliers down weighted(These are hits that are very far from state hit) and chi2 cuts
 	for ( StringVec::iterator it = pedeSteerAddCmds.begin( ); it != pedeSteerAddCmds.end( ); ++it ) {
 		// two backslashes will be interpreted as newline
 		if ( *it == "\\\\" ){

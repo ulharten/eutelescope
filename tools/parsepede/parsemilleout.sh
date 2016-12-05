@@ -15,7 +15,7 @@
 #	of pede (mille.res) and converts alignment constants 
 #	into LCIO and/or GEAR collection.
 #
-#	NOTE: Steeting file must have comments in special format
+#	NOTE: Steering file must have comments in special format
 #	understood by pede2lcio executable. Be carefull with 
 #	modifications.
 #
@@ -103,30 +103,25 @@ join tmp_parsepede_file1 tmp_parsepede_file2 | grep '^[0-9]' | awk '{ printf "%-
 
 # Convert to lcio collection file
 if [ $# == 3 ]; then 
- echo  pede2lcio out.pede2lcio $lcio_file
- pede2lcio out.pede2lcio $lcio_file
-
-
- rm -f out.pede2lcio
- rm -f file1 file2
-
+  echo  pede2lcio out.pede2lcio $lcio_file
+  pede2lcio out.pede2lcio $lcio_file
+  rm -f out.pede2lcio
+  rm -f file1 file2
 fi
 
 # Convert to lcio collection file and new GEAR file
 if [ $# == 5 ]; then 
+# Check extension of supplied old GEAR file
+  if ( is_file_gear "$oldgear_file" ); then
+    echo "File $oldgear_file is not a gear file. Terminate..."
+    exit $E_BADFILE
+   fi
+ 
+  echo pede2lcio -g out.pede2lcio $lcio_file $oldgear_file $newgear_file
+  pede2lcio -g out.pede2lcio $lcio_file $oldgear_file $newgear_file
 
- # Check extension of supplied old GEAR file
- if ( is_file_gear "$oldgear_file" )
- then
-  echo "File $oldgear_file in not a gear file. Terminate..."
-  exit $E_BADFILE
- fi
-
- echo pede2lcio -g out.pede2lcio $lcio_file $oldgear_file $newgear_file
- pede2lcio -g out.pede2lcio $lcio_file $oldgear_file $newgear_file
-
- rm -f out.pede2lcio
- rm -f file1 file2
+  rm -f out.pede2lcio
+  rm -f file1 file2
 
 fi
 rm tmp_parsepede_file1 tmp_parsepede_file2

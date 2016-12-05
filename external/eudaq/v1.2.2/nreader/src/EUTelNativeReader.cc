@@ -162,14 +162,14 @@ void EUTelNativeReader::readDataSource(int numEvents) {
   reader->NextEvent();
   eudaq::DetectorEvent eudaqEvent 			= reader->Event();
   eudaq::DetectorEvent nextEudaqEvent 		= reader->Event();
-  eudaq::DetectorEvent nextNextEudaqEvent 	= reader->Event();
+//  eudaq::DetectorEvent nextNextEudaqEvent 	= reader->Event();
     
-  while ( (eventCounter < numEvents /*2*/) ) {
+  while ( (eventCounter < numEvents -1 /*2*/) ) {
     
     reader->NextEvent();
 //    eudaqEvent  = reader->Event();
     nextEudaqEvent = reader->Event();
-    nextNextEudaqEvent = reader->Event();
+//    nextNextEudaqEvent = reader->Event();
     
     if (eudaqEvent.IsBORE()) {
 
