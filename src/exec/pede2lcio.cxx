@@ -338,7 +338,13 @@ int main( int argc, char ** argv ) {
                 constants_map[sensorID]->setXOffsetError( err ) ;
             }
             if( tokens[1].compare("Y") == 0 ) {
-                constants_map[sensorID]->setYOffset( value );
+// included because DUT corrections in y-offset get applied in the wrong direction
+		if (sensorID == 71){
+			streamlog_out(WARNING9) << "correcting y offset in reverse direction to " << -1*value << "\n instead of to  " << value<< std::endl;
+               		constants_map[sensorID]->setYOffset( -1*value ); 
+		}
+		else
+			constants_map[sensorID]->setYOffset( value );
                 constants_map[sensorID]->setYOffsetError( err ) ;
             }
             if( tokens[1].compare("Z") == 0 ) {
